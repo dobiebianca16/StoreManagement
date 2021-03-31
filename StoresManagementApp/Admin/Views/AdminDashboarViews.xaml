@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.Admin.Views.AdminDashboarViews">
+    <ContentPage.Content>
+       
+        <StackLayout  >
+            <Label Text="Employee List" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Title"/>
+          <ListView x:Name="MyList" Footer="" HasUnevenRows="True" ItemSelected="MyList_ItemSelected">
+           <ListView.ItemTemplate>
+               <DataTemplate>
+                   <ViewCell>
+                         <Grid Margin="0,20">
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="3*"/>
+                               <ColumnDefinition Width="7*"/>
+                           </Grid.ColumnDefinitions>
+                           <StackLayout>
+                            <Frame HasShadow="False" CornerRadius="40" BorderColor="LightGray" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                             <Image Source="noUser.jpg" Aspect="AspectFill"  HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                           </StackLayout>
+                           <StackLayout Grid.Column="1" Margin="20" Orientation="Horizontal">
+                              <Label Text="{Binding Username}"  VerticalOptions="CenterAndExpand"/>
+                              <Button CornerRadius="20" Clicked="Button_Clicked"  TextColor="White" VerticalOptions="CenterAndExpand" Text="Assign Task" BackgroundColor="Black" HorizontalOptions="EndAndExpand" Padding="30,0"/>
+
+                           
+                       </StackLayout>
+                            
+                       </Grid>                 
+                   </ViewCell>
+               </DataTemplate>
+           </ListView.ItemTemplate>
+        </ListView>
+           <Button CornerRadius="20" Clicked="Stoc_Clicked"  TextColor="White" VerticalOptions="CenterAndExpand" Text="Stock" BackgroundColor="Pink" HorizontalOptions="EndAndExpand" Padding="30,0"/>
+            <Button CornerRadius="20" Clicked="Back_Clicked"  TextColor="White" VerticalOptions="CenterAndExpand" Text="Back" BackgroundColor="Pink" HorizontalOptions="EndAndExpand" Padding="30,0"/>
+           
+       </StackLayout>
+  
+    </ContentPage.Content>
+</ContentPage>

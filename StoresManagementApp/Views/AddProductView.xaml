@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.Views.AddProductView"
+    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Add product">
+
+    <ContentPage.BindingContext>
+        <vm:AddProductsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" />
+        <StackLayout Grid.Row="1">
+            
+            <Label Text="Product Name " Padding="10,16,10,0" />
+            <Entry Text="{Binding ProductName}" Margin="16,0,16,0"/>
+
+
+            <Label Text="Product Category " Padding="10,16,10,0" />
+             <Entry Text="{Binding CategoryName}" Margin="16,0,16,0"/>
+
+            <Label Text="Product Subcategory " Padding="10,16,10,0" />
+            <Entry Text="{Binding SubcategoryName}" Margin="16,0,16,0"/>
+
+            <Label Text="Product Description " Padding="10,16,10,0" />
+            <Entry Text="{Binding Description}" Margin="16,0,16,0"/>
+
+            <Label Text="Price " Margin="16,10,16,0"/>
+            <Entry Keyboard="Numeric" Margin="16,0,16,0" Text="{Binding Price}"/>
+
+            <Label Text="Color" Padding="16,10,16,0"/>
+            <Entry Text="{Binding Color}" Margin="16,0,16,0"/>
+
+            <Label Text="Size" Padding="16,10,16,0"/>
+            <Entry Text="{Binding Size}" Margin="16,0,16,0" />
+
+
+            <Label Text="Quantity" Padding="16,10,16,0"/>
+            <Entry Text="{Binding Quantity}" Margin="16,0,16,0" />
+
+            <Button  WidthRequest="100" CornerRadius="20" Text="Add product" Command="{Binding AddProductCommand}"/>
+            <Button Text="Go to Home " CornerRadius="20" WidthRequest="100" BackgroundColor="SkyBlue" HeightRequest="50" Command="{Binding HomeCommand}"/>
+        </StackLayout>
+     
+       
+   </Grid>
+    </ContentPage.Content>
+</ContentPage>

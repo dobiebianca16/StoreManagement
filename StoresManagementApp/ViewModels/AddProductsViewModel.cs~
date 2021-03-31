@@ -1,0 +1,213 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Firebase.Database;
+using Firebase.Database.Query;
+using StoresManagementApp.Model;
+using StoresManagementApp.Services;
+using Xamarin.Forms;
+
+namespace StoresManagementApp.ViewModels
+{
+   
+
+    public class AddProductsViewModel:BaseViewModel
+    {
+        private Category _SelectedCategory;
+        public Category SelectedCategory
+        {
+            set
+            {
+                _SelectedCategory = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _SelectedCategory;
+            }
+        }
+        private Subcategory _SelectedSubcateg;
+        public Subcategory SelectedSubcateg
+        {
+            set
+            {
+                _SelectedSubcateg = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _SelectedSubcateg;
+            }
+        }
+
+        private string _ProductName;
+        public string ProductName
+        {
+            set
+            {
+                this._ProductName = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._ProductName;
+            }
+        }
+
+
+        private string _CategoryName;
+        public string CategoryName
+        {
+            set
+            {
+                this._CategoryName = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._CategoryName;
+            }
+        }
+
+        private string _SubcategoryName;
+        public string SubcategoryName
+        {
+            set
+            {
+                this._SubcategoryName = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._SubcategoryName;
+            }
+        }
+
+        private string _Description;
+        public string Description
+        {
+            set
+            {
+                this._Description = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Description;
+            }
+        }
+
+        private string _Size;
+        public string Size
+        {
+            set
+            {
+                this._Size = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Size;
+            }
+        }
+
+        private decimal _Price;
+        public decimal Price
+        {
+            set
+            {
+                this._Price = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Price;
+            }
+        }
+
+        private string _Color;
+        public string Color
+        {
+            set
+            {
+                this._Color = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Color;
+            }
+        }
+
+        private string _Image;
+        public string Image
+        {
+            set
+            {
+                this._Image = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Image;
+            }
+        }
+
+        private bool _Result;
+        public bool Result
+        {
+            set
+            {
+                this._Result = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Result;
+            }
+        }
+
+
+
+
+        public ObservableCollection<Subcategory> SubcategoriesName { get; set; }
+        public Command AddProductCommand { get; set; }
+
+        public ObservableCollection<Category> CategoriesName { get; set; }
+
+
+        public AddProductsViewModel()
+        {
+            CategoriesName = new ObservableCollection<Category>();
+            GetCategoriesName();
+            AddProductCommand= new Command(async () => await AddProductCommandAsync());
+        }
+
+        private void GetCategoriesName()
+        {
+            throw new NotImplementedException();
+        }
+        
+        private async Task AddProductCommandAsync()
+            {
+                
+                try
+                {
+                    var addProductService = new AddProductDataService();
+                    Result = await addProductService.AddProduct(CategoryName, SubcategoryName, ProductName,Description, Price, Size, Color);
+                    if (Result)
+                        await Application.Current.MainPage.DisplayAlert("Succes", "User Registered", "Ok");
+                    else
+                        await Application.Current.MainPage.DisplayAlert("Error", "User Already exists ", "Ok");
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "Ok");
+                }
+                
+            }
+       
+    }
+}

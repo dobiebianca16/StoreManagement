@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.Views.MeniuView">
+    <ContentPage.Content>
+        <Grid Padding="20" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1" Spacing="10">
+          <Button Text="Stoc" HorizontalOptions="Center" BackgroundColor=" #cc9966" TextColor="White"
+                        WidthRequest="200" HeightRequest="60" CornerRadius="20" Clicked="StocView"/>
+            <Button Text="Angajati" HorizontalOptions="Center" BackgroundColor=" #cc9966" TextColor="White"
+                        WidthRequest="200" HeightRequest="60" CornerRadius="20" />
+             <Button Text="Setari" HorizontalOptions="Center" BackgroundColor="#cc9966" TextColor="White"
+                        WidthRequest="200" HeightRequest="60" CornerRadius="20" />
+             <Button Text="Profil" HorizontalOptions="Center" BackgroundColor="#cc9966" TextColor="White"
+                        WidthRequest="200" HeightRequest="60" CornerRadius="20" />
+        </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

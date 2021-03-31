@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
+    Visual="Material"
+    x:Class="StoresManagementApp.Views.LoginView"
+     Shell.PresentationMode="ModalAnimated">
+
+
+    <ContentPage.Content>
+        <Grid Padding="20" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+             
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+        
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="30" >
+                    
+                <Label Text="Login" FontFamily="CabinSketch" TextColor=" #3a2613" 
+                       FontSize="40" HorizontalOptions="Center"/>
+
+             </StackLayout>
+            <StackLayout Grid.Row="1" Spacing="10">
+                <Entry Placeholder="Enter Username" Text="{Binding Username}"/>
+                <Entry Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True"/>
+                <Button Text="Login" HorizontalOptions="Center" BackgroundColor="#3a2613" TextColor="White"
+                        WidthRequest="200" HeightRequest="60" CornerRadius="20" Command="{Binding LoginCommand}"
+                        />
+                <Label Text="New Users:"/>
+                <Button Text="Register" HorizontalOptions="Center" BackgroundColor="#dab18b"
+                        TextColor="White" WidthRequest="200" HeightRequest="60" CornerRadius="20"
+                        Clicked="Register_Clicked"/>
+                <Label Text="Admin:"/>
+                <Button Text="Admin" HorizontalOptions="Center" BackgroundColor="#dab18b"
+                        TextColor="White" WidthRequest="200" HeightRequest="60" CornerRadius="20"
+                        Clicked="Button_Clicked"/>
+            </StackLayout>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.Views.OrderHistoryView"
+     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:helpers="clr-namespace:DemoApp.Helpers"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
+    ios:Page.UseSafeArea="True"
+    Visual="Material">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons"/>
+                <On Platform="Android" Value="materialdesignicons-webfont.tttf#Material Design Icons"/>
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+<ContentPage.BindingContext>
+    <vm:OrderHistoryViewModel/>
+</ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="StoreManagement" FontSize="40" TextColor=" #996633" FontFamily="CabinSketch" HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Label x:Name="LabelName" FontSize="Subtitle" TextColor=" #996633" HorizontalOptions="Center"
+                   VerticalOptions="End"/>
+            <ImageButton Source="{FontImage FontFamily={ StaticResource MaterialFontFamily},
+                Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30,Color=SaddleBrown}" Grid.Row="0" HorizontalOptions="Start"
+                         Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>
+            <pancake:PancakeView BackgroundColor="WhiteSmoke" CornerRadius="40,40,0,0" Grid.Row="1">
+                <Grid>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" WidthRequest="50" HeightRequest="50" Color="SaddleBrown"
+                                       IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <CollectionView ItemsSource="{Binding OrderDetails}" IsGrouped="True" Margin="25,10,25,0">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyViewTemplate>
+                            <DataTemplate>
+                                <Label Text="no orders " HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </DataTemplate>
+                        </CollectionView.EmptyViewTemplate>
+                        <CollectionView.GroupHeaderTemplate>
+                            <DataTemplate>
+                                <Grid BackgroundColor="LightGray" Padding="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                           <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Order id" HorizontalOptions="Center" FontSize="Subtitle" TextColor="black" Grid.Row="0"/>
+                                    <Label Text="{Binding OrderId}" TextColor="black"  HorizontalOptions="Center" Grid.Row="1" FontSize="Body"/>
+
+
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.GroupHeaderTemplate>
+                        <CollectionView.GroupFooterTemplate>
+                            <DataTemplate>
+                                <StackLayout BackgroundColor="#eeeeee">
+                                    <Label Text="{Binding TotalCost, StringFormat='Total Cost: {0:c}'}" TextColor="SaddleBrown" FontAttributes="Bold"/>
+                                    <BoxView BackgroundColor="SaddleBrown" HeightRequest="3"/>
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.GroupFooterTemplate>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10" HasShadow="False" Margin="10" BorderColor="SaddleBrown">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                    
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Order detail id:"/>
+                                                    <Span Text="{Binding OrderDetailId}" TextColor="Black" FontAttributes="bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                         <Label Grid.Row="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Product Name:"/>
+                                                    <Span Text="{Binding ProductName}" TextColor="Black" FontAttributes="bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                         <Label Grid.Row="2">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Quantity:"/>
+                                                    <Span Text="{Binding Quantity}" TextColor="Black" FontAttributes="bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                         <Label Grid.Row="3">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Price:"/>
+                                                    <Span Text="{Binding Price, StringFormat='{0:c}'}" TextColor="Black" FontAttributes="bold"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </pancake:PancakeView>
+
+
+
+        </Grid>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

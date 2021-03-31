@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.Views.AddProductView"
+    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
+    Title="Add product">
+
+    <ContentPage.BindingContext>
+        <vm:AddProductsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout >
+            <Label Text="Product Name " Padding="10,16,10,0" />
+            <Entry Text="{Binding ProductName}" Margin="16,0,16,0"/>
+            <Label Text="Product Description " Padding="10,16,10,0" />
+            <Entry Text="{Binding Description}" Margin="16,0,16,0"/>
+
+            <Label Text="Categories" Padding="10,10,10,0"/>
+            <Picker x:Name="CategoryNamePicker" Title="Select Category">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Femei</x:String>
+                        <x:String>Barbati</x:String>
+                        <x:String>Copii</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+                
+            </Picker> 
+           <ListView x:Name="categorylist" ItemSelected="Category_ItemSelected">
+               <ListView.ItemTemplate>
+                   <DataTemplate>
+                       <ViewCell >
+                           <StackLayout>
+                            
+                           </StackLayout>
+                       </ViewCell>
+                   </DataTemplate>
+               </ListView.ItemTemplate>
+           </ListView>
+
+
+
+            <Label Text="Subcategories" Padding="10,10,10,0"/>
+            <Picker x:Name="Categories" Title="Select category" ItemsSource="{Binding s}"/>
+                
+
+
+            <Label Text="Price " Margin="16,10,16,0"/>
+            <Entry Keyboard="Numeric" Margin="16,0,16,0" Text="{Binding Price}"/>
+            <Label Text="Color" Padding="16,10,16,0"/>
+            <Entry Margin="16,0,16,0" Text="{Binding Color}"/>
+            <Button Margin="20" WidthRequest="200" Text="Add product" Command="{Binding AddProductCommand}"/>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

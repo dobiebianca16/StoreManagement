@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:DemoApp.Helpers"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="StoresManagementApp.Views.ProductDetailView"
+    >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons"/>
+                <On Platform="Android" Value="materialdesignicons-webfont.tttf#Material Design Icons"/>
+            </OnPlatform>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="200"/>
+                  <RowDefinition Height="Auto"/>
+                 <RowDefinition Height="50"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                  <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+             <Image Grid.Row="0" Source="{Binding SelectedProduct.ImageUrl}"  Aspect="AspectFill" VerticalOptions="Start"/>
+             <Label Grid.Row="1" Text="{Binding SelectedProduct.ProductName}" TextColor="white" FontAttributes="Bold" FontSize="35" Margin="25,-85,0,0"/>
+             <ImageButton Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft}, Size=30, Color=SaddleBrown }" Grid.Row="0"
+                          HorizontalOptions="Start" Aspect="AspectFill"  VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>
+             <StackLayout Grid.Row="2" Spacing="10" Padding="10 " VerticalOptions="Start">
+
+                
+                    <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Product Name:" FontSize="Subtitle" />
+                     <Label Text="{Binding SelectedProduct.ProductName}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                  <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Description:" FontSize="Subtitle"/>
+                     <Label Text="{Binding SelectedProduct.Description}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                  <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Size:" FontSize="Subtitle"/>
+                     <Label Text="{Binding SelectedProduct.Size}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                  <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Color:" FontSize="Subtitle"/>
+                     <Label Text="{Binding SelectedProduct.Color}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                  <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Price:" FontSize="Subtitle"/>
+                     <Label Text="{Binding SelectedProduct.Price}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                  <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                     <Label Text="Quantity" FontSize="Subtitle"/>
+                     <Label Text="{Binding SelectedProduct.Quantity}" FontSize="Subtitle" TextColor=" #27190c" />
+
+                 </StackLayout>
+                 </StackLayout>
+                 <Grid Grid.Row="3" HorizontalOptions="Center">
+                     <Grid.RowDefinitions>
+                         <RowDefinition Height="100"/>
+                         <RowDefinition Height="Auto"/>
+                     </Grid.RowDefinitions>
+                     <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="*"/>
+                         <ColumnDefinition Width="*"/>
+                         <ColumnDefinition Width="*"/>
+                     </Grid.ColumnDefinitions>
+                     <Button Text="-" Font="30" TextColor="white" BackgroundColor="Black"  Grid.Row="1"  Grid.Column="0" HorizontalOptions="Start"
+                             Command="{Binding DecrementOrderCommand}"/>
+                     <Entry Text="{Binding TotalQuantity}" HorizontalTextAlignment="Center" FontSize="30" Grid.Row="1" Grid.Column="1"/>
+                     <Button Text="+" Font="30" TextColor="white" BackgroundColor="Black" Grid.Row="1" Grid.Column="2" HorizontalOptions="End"
+                             Command="{Binding IncrementOrderCommand}"/>
+
+                  </Grid>
+                 <StackLayout Orientation="Horizontal" Grid.Row="5">
+
+                     <pancake:PancakeView CornerRadius="0,20,60,0" HorizontalOptions="Center">
+                         <Button Text="Add to cart" BackgroundColor="LimeGreen" WidthRequest="200" HorizontalOptions="Center"
+                                 Command="{Binding AddToCartCommand}" TextColor="Black" HeightRequest="50"/>
+
+                     </pancake:PancakeView>
+                     <pancake:PancakeView CornerRadius="0,20,60,0" HorizontalOptions="Center">
+                         <Button Text="View cart" TextColor="Black" BackgroundColor="Orange" WidthRequest="200" HorizontalOptions="Center"
+                                 Command="{Binding ViewCartCommand}" HeightRequest="50"/>
+
+                     </pancake:PancakeView>
+                 </StackLayout>
+          <pancake:PancakeView Grid.Row="7" CornerRadius="60,60,0,0" >
+
+              <Button Text="Go to Home " BackgroundColor="SkyBlue" HeightRequest="50" Command="{Binding HomeCommand}"/>
+
+          </pancake:PancakeView>
+          </Grid>
+    </ContentPage.Content>
+</ContentPage>

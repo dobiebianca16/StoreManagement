@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using StoresManagementApp.Model;
+using StoresManagementApp.Services;
+using StoresManagementApp.ViewModels;
+using Xamarin.Forms;
+
+namespace StoresManagementApp.Views
+{
+    public partial class AddProductView : ContentPage
+    {
+        AddProductDataService addproductDataService;
+        public AddProductView()
+        {
+            InitializeComponent();
+            BindingContext = new AddProductsViewModel();
+            
+
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            addproductDataService = new AddProductDataService();
+
+            var myresult = await addproductDataService.GetCategoryName();
+            categorylist.ItemsSource = myresult;
+            
+        }
+        
+        
+    }
+}
