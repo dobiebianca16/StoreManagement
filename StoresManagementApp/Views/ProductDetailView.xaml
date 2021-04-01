@@ -90,12 +90,12 @@
                  <StackLayout Orientation="Horizontal" Grid.Row="5">
 
                      <pancake:PancakeView CornerRadius="0,20,60,0" HorizontalOptions="Center">
-                         <Button Text="Add to cart" BackgroundColor="LimeGreen" WidthRequest="200" HorizontalOptions="Center"
+                         <Button Text="Add to cart" BackgroundColor="LightGreen" WidthRequest="200" HorizontalOptions="Center"
                                  Command="{Binding AddToCartCommand}" TextColor="Black" HeightRequest="50"/>
 
                      </pancake:PancakeView>
                      <pancake:PancakeView CornerRadius="0,20,60,0" HorizontalOptions="Center">
-                         <Button Text="View cart" TextColor="Black" BackgroundColor="Orange" WidthRequest="200" HorizontalOptions="Center"
+                         <Button Text="View cart" TextColor="Black" BackgroundColor="LightSalmon" WidthRequest="200" HorizontalOptions="Center"
                                  Command="{Binding ViewCartCommand}" HeightRequest="50"/>
 
                      </pancake:PancakeView>
