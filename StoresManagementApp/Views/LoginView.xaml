@@ -24,11 +24,13 @@
 
              </StackLayout>
             <StackLayout Grid.Row="1" Spacing="10">
+              
                 <Entry Placeholder="Enter Username" Text="{Binding Username}"/>
                 <Entry Placeholder="Enter Password" Text="{Binding Password}" IsPassword="True"/>
                 <Button Text="Login" HorizontalOptions="Center" BackgroundColor="#3a2613" TextColor="White"
                         WidthRequest="200" HeightRequest="60" CornerRadius="20" Command="{Binding LoginCommand}"
                         />
+                   
                 <Label Text="New Users:"/>
                 <Button Text="Register" HorizontalOptions="Center" BackgroundColor="#dab18b"
                         TextColor="White" WidthRequest="200" HeightRequest="60" CornerRadius="20"

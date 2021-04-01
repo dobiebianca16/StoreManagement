@@ -40,6 +40,19 @@ namespace StoresManagementApp.ViewModels
                 return this._Password;
             }
         }
+        private string _Email;
+        public string Email
+        {
+            set
+            {
+                this._Email = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return this._Email;
+            }
+        }
 
         private bool _IsBusy;
         public bool IsBusy
@@ -88,7 +101,7 @@ namespace StoresManagementApp.ViewModels
             {
                 IsBusy = true;
                 var userService = new UserService();
-                Result = await userService.RegisterUser(Username, Password);
+                Result = await userService.RegisterUser(Username, Password, Email);
                 if (Result)
                     await Application.Current.MainPage.DisplayAlert("Succes", "User Registered", "Ok");
                 else

@@ -8,7 +8,7 @@
     ios:Page.UseSafeArea="True"
     xmlns:helpers="clr-namespace:DemoApp.Helpers"
     Visual="Material"
-    BackgroundColor="Aquamarine"
+    BackgroundColor="#f2e6d9"
     xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
     >
     
@@ -33,7 +33,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <ImageButton Source="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=Red} "
+            <ImageButton Source="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=White} "
                          Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>
              <Label Text="StoreManagement" FontSize="40" TextColor="WhiteSmoke" FontFamily="CabinSketch" HorizontalOptions="Center"
                    VerticalOptions="Center"/>
@@ -46,8 +46,8 @@
                     <StackLayout>
                         <Label Text="Are you sure you want to logout?"/>
                         <StackLayout Orientation="Horizontal" Spacing="10">
-                            <Button Text="Yes" HorizontalOptions="Center" BackgroundColor="red" CornerRadius="20" Command="{Binding LogoutCommand}"/>
-                             <Button Text="No" HorizontalOptions="Center" BackgroundColor="green" CornerRadius="20" Command="{Binding GoToMeniu}"/>
+                            <Button Text="Yes" HeightRequest="50" WidthRequest="100" HorizontalOptions="Center" BackgroundColor="LightGreen"  CornerRadius="20" Command="{Binding LogoutCommand}"/>
+                             <Button Text="No" HeightRequest="50" WidthRequest="100" HorizontalOptions="EndAndExpand" BackgroundColor="IndianRed" CornerRadius="20" Command="{Binding GoToMeniu}"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

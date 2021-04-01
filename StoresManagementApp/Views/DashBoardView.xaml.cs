@@ -35,7 +35,7 @@ namespace StoresManagementApp.Views
         }
         async void OnClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MeniuView());
+            await Navigation.PushModalAsync(new SubcategoriesView());
         }
 
         async void MyList_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)

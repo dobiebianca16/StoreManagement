@@ -53,7 +53,7 @@ namespace StoresManagementApp.Services
         }
 
 
-        public async Task<bool> RegisterUser(string uname, string passwd)
+        public async Task<bool> RegisterUser(string uname, string passwd, string email)
         {
             if (await IsUserExists(uname) == false)
             {
@@ -63,6 +63,8 @@ namespace StoresManagementApp.Services
                         UserId = Guid.NewGuid(),
                         Username = uname,
                         Password = passwd,
+                        Email= email
+
 
                     }); ;
                 return true;
@@ -150,16 +152,16 @@ namespace StoresManagementApp.Services
                 return false;
         }
 
-        public async Task<bool> RegisterAdminUser(string username, string password)
+        public async Task<bool> RegisterAdminUser(string uname, string passwd)
         {
-            if (await IsAdminExists(username) == false)
+            if (await IsAdminExists(uname) == false)
             {
                await client.Child("RegisterAdminTable")
                 .PostAsync(new User()
                 {
                     UserId = Guid.NewGuid(),
-                    Username = username,
-                    Password = password,
+                    Username = uname,
+                    Password = passwd,
 
                 });
                 return true;
@@ -172,11 +174,11 @@ namespace StoresManagementApp.Services
        
    
 
-        public async Task<User> LoginAdminUser(string username, string passpowrd)
+        public async Task<User> LoginAdminUser(string uname, string passwd)
         {
             var GetPerson = (await client.Child("RegisterAdminTable")
-                .OnceAsync<User>()).Where(u => u.Object.Username == username)
-                .Where(u => u.Object.Password == passpowrd).FirstOrDefault();
+                .OnceAsync<User>()).Where(u => u.Object.Username == uname)
+                .Where(u => u.Object.Password == passwd).FirstOrDefault();
 
             if (GetPerson != null)
             {

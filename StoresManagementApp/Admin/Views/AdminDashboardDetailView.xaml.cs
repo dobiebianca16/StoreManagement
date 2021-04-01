@@ -22,10 +22,10 @@ namespace StoresManagementApp.Admin.Views
             Label lblClicked = (Label)sender;
             var item = (TapGestureRecognizer)lblClicked.GestureRecognizers[0];
             var tappedItem = item.CommandParameter as TaskModel;
-
-
-
         }
-
+        async void ImageButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }

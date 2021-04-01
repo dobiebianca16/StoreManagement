@@ -10,7 +10,7 @@ namespace StoresManagementApp.Views
         public CartView()
         {
             InitializeComponent();
-            LabelName.Text = "Welcome" + "  " + Preferences.Get("Username", "Guest") ;
+            LabelName.Text =  "  " + Preferences.Get("Username", "Guest") ;
         }
         async void ImageButton_Clicked(System.Object sender, System.EventArgs e)
         {

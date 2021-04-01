@@ -4,21 +4,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="StoresManagementApp.Admin.Views.AdminDashboarViews">
     <ContentPage.Content>
-       
+       <Grid>
+           <Grid.RowDefinitions>
+               <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+           </Grid.RowDefinitions>
         <StackLayout  >
-            <Label Text="Employee List" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Title"/>
+            <Label Grid.Row="0" Text="Employee List" HeightRequest="50" Margin="50,70,50,50" TextColor="Black" FontAttributes="Bold" FontSize="Title"/>
           <ListView x:Name="MyList" Footer="" HasUnevenRows="True" ItemSelected="MyList_ItemSelected">
            <ListView.ItemTemplate>
                <DataTemplate>
                    <ViewCell>
-                         <Grid Margin="0,20">
+                         <Grid Grid.Row="1" Margin="0,20">
                            <Grid.ColumnDefinitions>
                                <ColumnDefinition Width="3*"/>
                                <ColumnDefinition Width="7*"/>
                            </Grid.ColumnDefinitions>
                            <StackLayout>
                             <Frame HasShadow="False" CornerRadius="40" BorderColor="LightGray" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
-                             <Image Source="noUser.jpg" Aspect="AspectFill"  HorizontalOptions="Center" VerticalOptions="Center" />
+                             <Image Source="man.png" Aspect="AspectFill"  HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                            </StackLayout>
                            <StackLayout Grid.Column="1" Margin="20" Orientation="Horizontal">
@@ -34,9 +38,10 @@
            </ListView.ItemTemplate>
         </ListView>
            <Button CornerRadius="20" Clicked="Stoc_Clicked"  TextColor="White" VerticalOptions="CenterAndExpand" Text="Stock" BackgroundColor="Pink" HorizontalOptions="EndAndExpand" Padding="30,0"/>
-            <Button CornerRadius="20" Clicked="Back_Clicked"  TextColor="White" VerticalOptions="CenterAndExpand" Text="Back" BackgroundColor="Pink" HorizontalOptions="EndAndExpand" Padding="30,0"/>
+         
            
        </StackLayout>
-  
+  </Grid>
+
     </ContentPage.Content>
 </ContentPage>

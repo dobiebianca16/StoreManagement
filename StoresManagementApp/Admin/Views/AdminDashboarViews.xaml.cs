@@ -23,7 +23,7 @@ namespace StoresManagementApp.Admin.Views
         }
         async void Stoc_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new StocView());
+            await Navigation.PushModalAsync(new SubcategoriesView());
         }
 
         async void Button_Clicked(System.Object sender, System.EventArgs e)
@@ -86,10 +86,7 @@ namespace StoresManagementApp.Admin.Views
             MyList.SelectedItem = null;
 
         }
-        async void Back_Clicked(System.Object sender, System.EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
+       
 
     }
 }

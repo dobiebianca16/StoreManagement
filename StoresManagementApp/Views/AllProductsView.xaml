@@ -2,12 +2,16 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    x:Class="StoresManagementApp.Views.CategoryView"
-    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels"
+    x:Class="StoresManagementApp.Views.AllProductsView"
     xmlns:helpers="clr-namespace:DemoApp.Helpers"
-    >
-  <ContentPage.Resources>
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:vm="clr-namespace:StoresManagementApp.ViewModels">
+
+<ContentPage.BindingContext>
+<vm:ProductsViewModel/>
+</ContentPage.BindingContext>
+
+ <ContentPage.Resources>
         <ResourceDictionary>
             <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
                 <On Platform="iOS" Value="Material Design Icons"/>
@@ -23,9 +27,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" HeightRequest="150" Source="backgr.jpeg" Aspect="AspectFill" VerticalOptions="Start"/>
-            <Label Grid.Row="1" Text="{Binding SelectedCategory.CategoryName}"  TextColor="Black" FontAttributes="Bold" FontSize="35"
-                   Margin="25,-85,0,0"/>
+            
             <ImageButton Source="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=Black} "
                          Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>
 
@@ -42,13 +44,14 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding TotalSubcategories, StringFormat='{0} Total Subcategories'}" FontAttributes="Bold"
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding TotalProducts, StringFormat='{0} Total Products'}" FontAttributes="Bold"
                            FontSize="18"/>
-                     <ImageButton Grid.Row="0" Grid.Column="1"  Source="addd.png" HeightRequest="40" Clicked="Button_Clicked"/>
+                     <ImageButton Source="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.PlusCircle}, Color=Black} "
+                         Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="Button_Clicked"/>
                   
 
 
-                    <CollectionView ItemsSource="{Binding SubcategoriesByCategory}"
+                    <CollectionView ItemsSource="{Binding AllProducts}"
                                     VerticalOptions="Start" VerticalScrollBarVisibility="Never" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                     SelectionChanged="CollectionView_SelectionChanged"
                                     SelectionMode="Single"  >
@@ -56,7 +59,7 @@
 
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame HasShadow="False" BackgroundColor="#f2e6d9"  HeightRequest="80" CornerRadius="20" Margin="0,10">
+                                    <Frame HasShadow="False" BackgroundColor="AliceBlue"  HeightRequest="10" CornerRadius="20" Margin="0,10">
 
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -65,15 +68,15 @@
                                                  <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                           
                                             </Grid.RowDefinitions>
                                             <pancake:PancakeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" CornerRadius="12" Margin="0,0,10,0">
                                                 <Image Source="{Binding Photo}" HeightRequest="100" WidthRequest="95" Aspect="AspectFill"/>
                  
                                             </pancake:PancakeView>
-                                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding SubcategoryName}" FontSize="15" FontAttributes="Bold"/>
+                                            <Label Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" Text="{Binding ProductName}" FontSize="15" FontAttributes="Bold"/>
                                            
 
                                         </Grid>

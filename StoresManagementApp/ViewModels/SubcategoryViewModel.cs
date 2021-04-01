@@ -56,6 +56,20 @@ namespace StoresManagementApp.ViewModels
             }
         }
 
+        private string _UserId;
+
+        public string UserId
+        {
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _UserId;
+            }
+        }
 
         public Command SearchViewCommand { get; set; }
 
@@ -67,7 +81,10 @@ namespace StoresManagementApp.ViewModels
 
         public Command LogoutCommand { get; set; }
 
-        public SubcategoryViewModel()
+        public Command DashBoardCommand { get; set; }
+        
+
+        public  SubcategoryViewModel()
         {
             Categories = new ObservableCollection<Category>();
             GetCategories();
@@ -79,6 +96,7 @@ namespace StoresManagementApp.ViewModels
                 Username = uname;
             UserCartItemsCount = new CartItemService().GetUserCartCount();
 
+            
             ViewCartCommand= new Command(async () => await ViewCartAsync());
             LogoutCommand = new Command(async () => await LogoutAsync());
             GetCategories();
@@ -86,8 +104,11 @@ namespace StoresManagementApp.ViewModels
             OrdersHistoryCommand = new Command(async () => await OrdersHistoryAsync());
 
             SearchViewCommand= new Command(async () => await SearchViewAsync());
+
+ 
         }
 
+       
         private async Task SearchViewAsync()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new SearchResultsView(SearchText));

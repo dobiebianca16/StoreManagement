@@ -66,7 +66,20 @@ namespace StoresManagementApp.ViewModels
             }
            
         }
+        private string _UserId;
 
+        public string UserId
+        {
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _UserId;
+            }
+        }
         private string _SubcategoryName;
         public string SubcategoryName
         {
@@ -179,7 +192,7 @@ namespace StoresManagementApp.ViewModels
 
         private async void GoToHomeAsync()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new StocView());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SubcategoriesView());
         }
 
         private async Task AddProductCommandAsync()

@@ -39,12 +39,29 @@ namespace StoresManagementApp.ViewModels
       
         public ObservableCollection<Product> ProductsBySubcategory { get; set; }
 
+        public ObservableCollection<Product> AllProducts { get; set; }
 
         public ProductsViewModel(Subcategory subcategory)
         {
             SelectedSubcategoryProduct = subcategory;
             ProductsBySubcategory = new ObservableCollection<Product>();
             GetProducts(subcategory.SubcategoryName);
+        }
+        public ProductsViewModel()
+        {
+            AllProducts = new ObservableCollection<Product>();
+            GetAllProducts();
+        }
+
+        private async void GetAllProducts()
+        {
+            var data = await new ProductService().GetProductsAsync();
+            AllProducts.Clear();
+            foreach(var item in data)
+            {
+                AllProducts.Add(item);
+            }
+            TotalProducts = AllProducts.Count;
         }
 
         private async void GetProducts(string subcatgoryname)

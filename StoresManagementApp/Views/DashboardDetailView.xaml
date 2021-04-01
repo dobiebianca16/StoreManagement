@@ -20,12 +20,14 @@
  <ContentPage.Content>
         <StackLayout>
             <Grid>
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
                 <ImageButton Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=DodgerBlue}"
                          Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>
+         
                 <Label Grid.Row="1" Text="Tasks"  FontAttributes="Bold" TextColor="DodgerBlue" FontSize="Title" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
             </Grid>
             <Grid  Margin="20,30">

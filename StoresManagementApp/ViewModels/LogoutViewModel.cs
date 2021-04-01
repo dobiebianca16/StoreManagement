@@ -9,7 +9,20 @@ namespace StoresManagementApp.ViewModels
 {
     public class LogoutViewModel: BaseViewModel
     {
+        private string _UserId;
 
+        public string UserId
+        {
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _UserId;
+            }
+        }
         public Command LogoutCommand { get; set; }
         public Command GoToMeniu { get; set; }
 
@@ -22,7 +35,7 @@ namespace StoresManagementApp.ViewModels
         private async Task GoToMeniuAsync()
         {
 
-            await Application.Current.MainPage.Navigation.PushModalAsync(new StocView());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SubcategoriesView());
         }
 
         private async Task LogoutUserAsync()

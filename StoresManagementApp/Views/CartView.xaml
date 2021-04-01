@@ -32,9 +32,9 @@
             </Grid.RowDefinitions>
 
             <BoxView Grid.Row="0"/>
-            <Label Text="StoreManagement" FontSize="40" TextColor=" #996633" FontFamily="CabinSketch" HorizontalOptions="Center"
+            <Label Text="StoreManagement" FontSize="40" TextColor=" Black" FontFamily="CabinSketch" HorizontalOptions="Center"
                    VerticalOptions="Center"/>
-            <Label x:Name="LabelName" FontSize="Subtitle" TextColor=" #996633" HorizontalOptions="Center"
+            <Label x:Name="LabelName" FontSize="Subtitle" TextColor=" Black" HorizontalOptions="Center"
                    VerticalOptions="End"/>
             <ImageButton Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=SaddleBrown}"
                          Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit" VerticalOptions="Start" Margin="10,30" Clicked="ImageButton_Clicked"/>

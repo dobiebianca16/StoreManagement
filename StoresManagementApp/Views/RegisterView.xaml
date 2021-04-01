@@ -8,6 +8,7 @@
             <Label Text="Register User" FontSize="24" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="DodgerBlue"/>
         <Entry Placeholder="Username" Text="{Binding Username}"></Entry>
         <Entry Placeholder="Password" Text="{Binding Password}"></Entry>
+        <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
         <Button Text="Register" HorizontalOptions="Center" BackgroundColor="DodgerBlue"
                         TextColor="White" WidthRequest="200" HeightRequest="60" CornerRadius="20" Command="{Binding RegisterCommand}"/>
         <Button Text="Back to login" HorizontalOptions="Center" BackgroundColor="SkyBlue"

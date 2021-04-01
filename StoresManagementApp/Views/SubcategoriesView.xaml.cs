@@ -8,8 +8,10 @@ namespace StoresManagementApp.Views
 {
     public partial class SubcategoriesView : ContentPage
     {
+   
         public SubcategoriesView()
         {
+          
             InitializeComponent();
         }
         async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
@@ -20,9 +22,6 @@ namespace StoresManagementApp.Views
             await Navigation.PushModalAsync(new CategoryView(category));
             ((CollectionView)sender).SelectedItem = null;
         }
-        async void BackToStoc(System.Object sender, System.EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
+     
     }
 }

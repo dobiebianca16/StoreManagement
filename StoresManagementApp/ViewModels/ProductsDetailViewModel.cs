@@ -43,6 +43,20 @@ namespace StoresManagementApp.ViewModels
             }
         }
 
+        private string _UserId;
+
+        public string UserId
+        {
+            set
+            {
+                _UserId = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                return _UserId;
+            }
+        }
         public Command IncrementOrderCommand { get; set; }
         public Command DecrementOrderCommand { get; set; }
         public Command AddToCartCommand { get; set; }
@@ -63,7 +77,7 @@ namespace StoresManagementApp.ViewModels
 
         private async void GoToHomeAsync()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new StocView());
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SubcategoriesView());
         }
 
         private async void ViewCartAsync()

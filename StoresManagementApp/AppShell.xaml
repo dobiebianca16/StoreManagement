@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:views="clr-namespace:StoresManagementApp.Views"
+    xmlns:helpers="clr-namespace:DemoApp.Helpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoresManagementApp.AppShell">
+
+<Shell.Resources>
+   
+        <ResourceDictionary>
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons"/>
+                <On Platform="Android" Value="materialdesignicons-webfont.tttf#Material Design Icons"/>
+            </OnPlatform>
+        </ResourceDictionary>
+    
+</Shell.Resources>
+
+
+   <TabBar>
+      <Tab Title="Stoc" Icon="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.Sack},Size=19}">
+           <ShellContent >
+                <views:SubcategoriesView/>
+           </ShellContent>
+       </Tab>
+  
+
+       <Tab Title="Add" Icon="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.PlusCircle},Size=35}">
+           <ShellContent >
+                <views:AddProductView/>
+           </ShellContent>
+       </Tab>
+  
+       <Tab Title="Profile" Icon="{FontImage  FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.CalendarArrowRight}}">
+           <ShellContent>
+               <views:AllProductsView/>
+
+           </ShellContent>
+       </Tab>
+      
+   </TabBar>
+</Shell>

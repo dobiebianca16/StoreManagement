@@ -3,21 +3,21 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     x:Class="StoresManagementApp.Views.DashBoardView"
+    xmlns:stoc="clr-namespace:StoresManagementApp.Admin.Views.StocView"
      Shell.PresentationMode="ModalAnimated"
 >
 
-
-     <ContentPage.Content>
+    <ContentPage.Content>
      
          <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="Auto"/>
                    <RowDefinition Height="Auto"/>
                    <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-           
-            <forms:ChartView x:Name="FakeChart" HeightRequest="150"/>
+           <Label Text="Tasks"  Grid.Row="0" HorizontalTextAlignment="Center" FontSize="Title" Margin="50,80,50,50" />
+            <forms:ChartView x:Name="FakeChart" HeightRequest="100"/>
            <ListView Grid.Row="1" ItemSelected="MyList_ItemSelected" SeparatorVisibility="None" Margin="20,20" x:Name="MyList" Footer="" HasUnevenRows="True">
            <ListView.ItemTemplate>
                <DataTemplate>
@@ -50,7 +50,5 @@
               
     
         </Grid>
-             
-           
-    </ContentPage.Content>
-</ContentPage>
+             </ContentPage.Content>
+    </ContentPage>

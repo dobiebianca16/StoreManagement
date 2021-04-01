@@ -1,4 +1,6 @@
 ﻿using System;
+using StoresManagementApp.Model;
+using StoresManagementApp.ViewModels;
 using StoresManagementApp.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -8,25 +10,28 @@ namespace StoresManagementApp
 {
     public partial class App : Application
     {
+       
         public App()
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
+          
 
-            /* string uname = Preferences.Get("Username", String.Empty);
+             string uname = Preferences.Get("Username", String.Empty);
              if(string.IsNullOrEmpty(uname))
              {
                  MainPage = new LoginView();
              }
              else
              {
-                 MainPage = new MeniuView(userId);
-             }*/
+                MainPage = new AppShell();
+             }
 
             //MainPage = new NavigationPage(new SettingPage());
-            
-           MainPage = new NavigationPage(new LoginView());
+
+            //MainPage = new NavigationPage(new AllProductsView());
+            //MainPage = new NavigationPage(new LoginView());
+            //MainPage = new AppShell() ;
         }
 
         protected override void OnStart()

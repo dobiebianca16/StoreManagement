@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using StoresManagementApp.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

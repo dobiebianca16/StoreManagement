@@ -51,6 +51,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                 <ColumnDefinition Width="Auto"/>
 
             </Grid.ColumnDefinitions>
 
@@ -67,8 +68,11 @@
                              Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.Shopping} , Size=40,Color=SaddleBrown}"
                              Margin="0,0,10,0" HorizontalOptions="End"
                             Command="{Binding ViewCartCommand}"/>
-
             <ImageButton Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
+                             Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.Account} , Size=40,Color=Black}"
+                             Margin="0,0,10,0" HorizontalOptions="End"
+                            Command="{Binding DashBoardCommand}"/>
+            <ImageButton Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"
                              Source="{FontImage FontFamily={ StaticResource MaterialFontFamily}, Glyph={x:Static helpers:IconFont.Logout},Size=40, Color=Black}"
                              Margin="0,0,10,0" HorizontalOptions="End"
                              Command="{Binding LogoutCommand}"/>
@@ -113,10 +117,7 @@
 
 
         </CollectionView>
-        <Grid Grid.Row="3" Grid.Column="0">
-            <Button Margin="0,0,10,10" TextColor="WhiteSmoke" Clicked="BackToStoc" Text="Back to stoc" BackgroundColor="#cc9966" CornerRadius="20"/>
-        </Grid>
-
+       
     </Grid>
 </ContentPage.Content>
 </ContentPage>
